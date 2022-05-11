@@ -2,7 +2,7 @@
 ***Solve any minesweeper board***
 
 #
-#### The program has both a mode to solve a board of any ratio/ no. of mines and a mode to let you play and offer a move if you get stuck
+#### This program has both a mode to solve a board of any ratio/ no. of mines and a mode to let you play and offer a move if you get stuck
 
 ### **Main screen**
 <img src="Screenshots/main_screen.png" width="400">
