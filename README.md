@@ -29,3 +29,5 @@ python3 -m pip3 install pygame
 <img src="Screenshots/lost.png" width="400">
 <img src="Screenshots/conf.png" width="400">
 <img src="Screenshots/game2.png" width="400">
+
+- Inspired by CS50ai
