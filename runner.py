@@ -446,6 +446,25 @@ while True:
                             pygame.draw.rect(screen, GRAY, rect)
                         if (i, j) == selected:
                             pygame.draw.rect(screen, (220, 20, 60), rect, 3)
+
+                            # Added probability system to make a guess
+                            if (i, j) not in revealed:
+                                prob = MINES / ((HEIGHT*WIDTH) - len(ai.safes))
+                                for l in ai.knowledge:
+                                    if (i, j) in l.cells:
+                                        prob += l.count/len(l.cells)
+                                if (i, j) in ai.mines:
+                                    prob = 1
+                                elif (i, j) in ai.safes:
+                                    prob = 0
+
+                                text = "{:.1f}%".format(prob*100)
+                                percentText = pygame.font.Font(OPEN_SANS, 15).render(text, True, (210, 43, 43))
+                                percentRect = percentText.get_rect()
+                                percentRect.center = rect.center
+                                
+                                screen.blit(percentText, percentRect)
+
                         else:
                             pygame.draw.rect(screen, WHITE, rect, 3)
 
