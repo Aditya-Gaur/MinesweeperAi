@@ -449,13 +449,19 @@ while True:
 
                             # Added probability system to make a guess
                             if (i, j) not in revealed:
-                                prob = MINES / ((HEIGHT*WIDTH) - len(ai.safes))
+                                prob = 0
                                 for l in ai.knowledge:
                                     if (i, j) in l.cells:
-                                        prob += l.count/len(l.cells)
+                                        if prob > 0:
+                                            prob += prob*l.count/len(l.cells)
+                                        else:
+                                            prob = l.count/len(l.cells)
+
+                                if prob == 0:
+                                    prob = MINES / ((HEIGHT*WIDTH) - len(ai.safes))
                                 if (i, j) in ai.mines:
                                     prob = 1
-                                elif (i, j) in ai.safes:
+                                if (i, j) in ai.safes:
                                     prob = 0
 
                                 text = "{:.1f}%".format(prob*100)
